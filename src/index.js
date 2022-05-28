@@ -3,18 +3,14 @@ import "dotenv/config"
 import express from "express";
 import cors from "cors";
 
+import endpoints from './endpoints.js'
+
 const server = express();
 server.use(cors());
+server.use(express.json())
+server.use(endpoints);
 
 server.listen(process.env.PORT,
     () => console.log(`INICIOU A API ${process.env.PORT}`));
 
 
-server.get('/dobroo', (req, resp) => {
-
-        resp.send({
-            resposta: 2 + 3
-        })
-
-
-})
